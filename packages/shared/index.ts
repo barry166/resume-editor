@@ -2,8 +2,10 @@ export interface Page {
   uuid: string;
   env: "runtime" | "design";
   templateId: string;
-  // 个人信息
+  /**个人信息 */
   basicInfo: IBasicInfo;
+  /**自定义信息：github、linkedin */
+  customBasicInfo: CustomBasicInfoItem[];
   blocks: Block[];
 }
 
@@ -23,6 +25,14 @@ export interface IBasicInfo {
   email: string;
   /**微信号 */
   wechat: string;
+}
+
+export interface CustomBasicInfoItem {
+  id: string;
+  /**键 */
+  key: string;
+  /**值 */
+  value: string;
 }
 
 export enum BasicInfoKey {
