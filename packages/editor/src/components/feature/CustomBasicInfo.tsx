@@ -107,7 +107,7 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
             size="sm"
             variant="destructive"
             onClick={() => handleDeleteItem(item.id)}
-            className="ml-2"
+            className="ml-3"
           >
             删除
           </Button>

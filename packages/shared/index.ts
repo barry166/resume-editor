@@ -45,16 +45,25 @@ export enum BasicInfoKey {
   wechat = "微信号",
 }
 
-export interface Block {
-  uuid: string;
-  /**模块类型: 简单模块 | 复杂模块 */
-  type: "simple" | "complex";
+export type BlockType = "simple" | "complex";
+
+export type BlockProps = {
   /**模块名称 */
   name: string;
   /**描述内容-简单模块 */
   content?: string;
   /**复杂模块条目 */
-  items: BlockItem[];
+  items?: BlockItem[];
+  /**复杂模块展示名称 */
+  itemLabelMap?: object;
+};
+
+export interface Block {
+  uuid: string;
+  /**模块类型: 简单模块 | 复杂模块 */
+  type: BlockType;
+  /**传递给组件的配置props */
+  config: BlockProps;
 }
 
 export interface BlockItem {

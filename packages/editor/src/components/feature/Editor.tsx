@@ -3,6 +3,7 @@ import { pageState } from "@/store";
 import BasicInfo from "./BasicInfo";
 import { CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
+import { componentMap } from "@/utils/componentMap";
 
 interface IProps {}
 
@@ -37,6 +38,12 @@ const Editor: React.FC<IProps> = () => {
       <CustomBasicInfo value={page.customBasicInfo} onChange={handleCustomBasicInfoChange} />
 
       {/* 区域块逻辑渲染 */}
+      {page.blocks.map((block) => {
+        const { type, config } = block;
+        const BlockComponent = componentMap[type];
+        if (!BlockComponent) return null;
+        return <BlockComponent {...config} />;
+      })}
     </div>
   );
 };

@@ -23,19 +23,28 @@ export const createDefaultPageConfig = (): Page => {
       {
         uuid: "2",
         type: "simple",
-        name: "个人简介",
-        content: "拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。",
-        items: [],
+        config: {
+          name: "个人简介",
+          content: "拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。",
+        },
       },
       {
         uuid: "3",
         type: "complex",
-        name: "工作经历",
-        items: [
-          { name: "公司A", content: "前端开发工程师", timeArea: [2019, 2021] },
-          { name: "公司B", content: "全栈开发工程师", timeArea: [2021, 2023] },
-        ],
+        config: {
+          name: "工作经历",
+          items: [
+            { name: "公司A", content: "前端开发工程师", timeArea: [2019, 2021] },
+            { name: "公司B", content: "全栈开发工程师", timeArea: [2021, 2023] },
+          ],
+        },
       },
     ],
   };
+};
+
+export const defaultBlockItenLabelMap = {
+  name: "条目名称",
+  content: "条目内容",
+  timeArea: "开始&结束时间",
 };
