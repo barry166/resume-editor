@@ -34,8 +34,8 @@ export const createDefaultPageConfig = (): Page => {
         config: {
           name: "工作经历",
           items: [
-            { name: "公司A", content: "前端开发工程师", timeArea: [2019, 2021] },
-            { name: "公司B", content: "全栈开发工程师", timeArea: [2021, 2023] },
+            { id: '1', name: "公司A", content: "前端开发工程师", timeArea: [2019, 2021] },
+            { id: '2', name: "公司B", content: "全栈开发工程师", timeArea: [2021, 2023] },
           ],
         },
       },

@@ -67,6 +67,7 @@ export interface Block {
 }
 
 export interface BlockItem {
+  id: string
   /**条目名称 */
   name: string;
   /**条目内容 */

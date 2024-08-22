@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import BlockTitle from "./BlockTitle";
 import { DraggableContainer } from "./DragDropContainer";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { useDragAction } from "@/hooks/useDragAction";
 
 interface CustomBasicInfoItem {
   id: string;
@@ -17,61 +16,18 @@ interface IProps {
 }
 
 const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
-  const [items, setItems] = useState<CustomBasicInfoItem[]>(value);
-  const [editingId, setEditingId] = useState<string | null>(null);
-  const [tempItem, setTempItem] = useState<{ id: string; key: string; value: string } | null>(null);
-
-  const handleAddItem = () => {
-    const newId = uuidv4();
-    setEditingId(newId);
-    setTempItem({ id: newId, key: "", value: "" });
-    setItems([...items, { id: newId, key: "", value: "" }]); // Add empty item directly to list
-  };
-
-  const handleEditItem = (id: string, item: CustomBasicInfoItem) => {
-    setEditingId(id);
-    setTempItem({ id, key: item.key, value: item.value });
-  };
-
-  const handleSaveCreateItem = () => {
-    if (tempItem && tempItem.key && tempItem.value) {
-      const updatedItems = items.map((item) => (item.id === tempItem.id ? { ...tempItem } : item));
-      setItems(updatedItems);
-      onChange(updatedItems);
-      setEditingId(null);
-      setTempItem(null);
-    }
-  };
-
-  const handleCancelEdit = () => {
-    if (editingId) {
-      if (!items.find((item) => item.id === editingId && item.key)) {
-        // Remove temp item if it's a new item being cancelled
-        setItems(items.filter((item) => item.id !== editingId));
-      }
-      setEditingId(null);
-      setTempItem(null);
-    }
-  };
-
-  const handleDeleteItem = (id: string) => {
-    const updatedItems = items.filter((item) => item.id !== id);
-    setItems(updatedItems);
-    onChange(updatedItems);
-  };
-
-  const handleItemChange = (newItems: CustomBasicInfoItem[]) => {
-    setItems(newItems);
-    onChange(newItems);
-  };
-
-  const moveItem = (dragIndex: number, hoverIndex: number) => {
-    const dragItem = items[dragIndex];
-    const newItems = [...items];
-    newItems.splice(dragIndex, 1);
-    newItems.splice(hoverIndex, 0, dragItem);
-    handleItemChange(newItems);
-  };
+  const {
+    items,
+    editingId,
+    tempItem,
+    setTempItem,
+    handleAddItem,
+    handleEditItem,
+    handleSaveCreateItem,
+    handleCancelEdit,
+    handleDeleteItem,
+    moveItem,
+  } = useDragAction<CustomBasicInfoItem>(value, onChange);
 
   const renderItem = ({ item }: { item: CustomBasicInfoItem }) => (
     <div className="flex flex-1 items-center justify-between p-2">
