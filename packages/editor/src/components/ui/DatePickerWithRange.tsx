@@ -40,11 +40,9 @@ export function DatePickerWithRange({
             {date?.from ? (
               date.to ? (
                 <>
-                  {/* {format(date.from, "LLL dd, y")} - {format(date.to, "LLL dd, y")} */}
                   {format(date.from, "yyyy-MM")} - {format(date.to, "yyyy-MM")}
                 </>
               ) : (
-                // format(date.from, "LLL dd, y")
                 format(date.from, "yyyy-MM")
               )
             ) : (
@@ -59,7 +57,7 @@ export function DatePickerWithRange({
             captionLayout="dropdown"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={setDate}
+            onSelect={handleChange}
             fromYear={1960}
             toYear={2190}
         />
