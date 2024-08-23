@@ -4,7 +4,11 @@
 import { SimpleBlock, ComplexBlock } from "@/components/feature/block";
 import { BlockProps } from "@resume/shared";
 
-export const componentMap: Record<"simple" | "complex", React.FC<BlockProps>> = {
+interface IProps extends BlockProps {
+  onChange: (items: any[]) => void;
+}
+
+export const componentMap: Record<"simple" | "complex", React.FC<IProps>> = {
   simple: SimpleBlock,
   complex: ComplexBlock,
 };

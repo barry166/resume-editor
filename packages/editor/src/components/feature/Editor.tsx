@@ -1,9 +1,10 @@
 import { useRecoilState } from "recoil";
 import { pageState } from "@/store";
 import BasicInfo from "./BasicInfo";
-import { CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
+import { BlockItem, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
+import { cloneDeep } from "lodash-es";
 
 interface IProps {}
 
@@ -30,8 +31,28 @@ const Editor: React.FC<IProps> = () => {
     }));
   };
 
+  const handleBlockChange = (id: string, items: BlockItem[]) => {
+    const targetBlock = page.blocks.find((block) => block.id === id);
+    if (!targetBlock) return;
+    setPage((prev) => ({
+      ...prev,
+      blocks: page.blocks.map((block) => {
+        if (block.id === id) {
+          return {
+            ...block,
+            config: {
+              ...block.config,
+              items,
+            },
+          };
+        }
+        return block;
+      }),
+    }));
+  };
+
   return (
-    <div className=" px-6">
+    <div className=" px-6 py-6">
       {/* 基础信息编辑 */}
       <BasicInfo value={page.basicInfo} onChange={handleBasicInfoChange} />
       {/* 自定义基础信息编辑 */}
@@ -39,10 +60,16 @@ const Editor: React.FC<IProps> = () => {
 
       {/* 区域块逻辑渲染 */}
       {page.blocks.map((block) => {
-        const { type, config } = block;
+        const { id, type, config } = block;
         const BlockComponent = componentMap[type];
         if (!BlockComponent) return null;
-        return <BlockComponent {...config} />;
+        return (
+          <BlockComponent
+            key={id}
+            {...config}
+            onChange={(items: BlockItem[]) => handleBlockChange(id, items)}
+          />
+        );
       })}
     </div>
   );

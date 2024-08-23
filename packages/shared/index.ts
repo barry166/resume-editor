@@ -49,17 +49,21 @@ export type BlockType = "simple" | "complex";
 
 export type BlockProps = {
   /**模块名称 */
-  name: string;
+  title: string;
   /**描述内容-简单模块 */
   content?: string;
   /**复杂模块条目 */
   items?: BlockItem[];
   /**复杂模块展示名称 */
-  itemLabelMap?: object;
+  itemLabelMap?: TItemLabelMap;
+};
+
+export type TItemLabelMap = {
+  [key in keyof Omit<BlockItem, "id">]?: string;
 };
 
 export interface Block {
-  uuid: string;
+  id: string;
   /**模块类型: 简单模块 | 复杂模块 */
   type: BlockType;
   /**传递给组件的配置props */
@@ -67,11 +71,16 @@ export interface Block {
 }
 
 export interface BlockItem {
-  id: string
+  id: string;
   /**条目名称 */
-  name: string;
+  title: string;
+  /**副标题 */
+  subTitle?: string;
+  /**城市 */
+  city?: string;
   /**条目内容 */
   content: string;
   /**时间区间 */
   timeArea: [number, number];
+  [key: string]: any;
 }

@@ -28,7 +28,7 @@ export const DraggableItem = <T extends ItemWithId>({
       ref={(node) => drop(preview(node))}
       className={`${itemClassName} ${
         isDragging ? "shadow-lg bg-blue-50" : "shadow-sm"
-      } transition duration-300 ease-in-out flex items-center mb-3`}
+      } transition duration-300 ease-in-out flex items-center mb-3 rounded-md hover:border-blue-500 hover:cursor-pointer`}
     >
       {!isEditing && (
         <div className="inline-block cursor-move" ref={drag}>

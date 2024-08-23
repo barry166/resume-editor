@@ -1,4 +1,4 @@
-import { Page } from "@resume/shared";
+import { Page, TItemLabelMap } from "@resume/shared";
 
 export const createDefaultPageConfig = (): Page => {
   return {
@@ -21,22 +21,42 @@ export const createDefaultPageConfig = (): Page => {
     ],
     blocks: [
       {
-        uuid: "2",
+        id: "2",
         type: "simple",
         config: {
-          name: "个人简介",
+          title: "个人简介",
           content: "拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。",
         },
       },
       {
-        uuid: "3",
+        id: "3",
         type: "complex",
         config: {
-          name: "工作经历",
+          title: "工作经历",
           items: [
-            { id: '1', name: "公司A", content: "前端开发工程师", timeArea: [2019, 2021] },
-            { id: '2', name: "公司B", content: "全栈开发工程师", timeArea: [2021, 2023] },
+            {
+              id: "1",
+              title: "公司A",
+              content: "前端开发工程师。。。",
+              timeArea: [2019, 2021],
+              subTitle: "高级前端开发",
+              city: "北京",
+            },
+            {
+              id: "2",
+              title: "公司B",
+              content: "全栈开发工程师。。。",
+              timeArea: [2021, 2023],
+              subTitle: "高级前端开发",
+              city: "北京",
+            },
           ],
+          itemLabelMap: {
+            title: "公司名称",
+            subTitle: "职位名称",
+            timeArea: "起止时间",
+            city: "所在城市",
+          },
         },
       },
     ],
@@ -47,4 +67,4 @@ export const defaultBlockItenLabelMap = {
   name: "条目名称",
   content: "条目内容",
   timeArea: "开始&结束时间",
-};
+} as TItemLabelMap;

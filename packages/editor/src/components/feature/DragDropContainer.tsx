@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { DraggableItem } from "./DraggableItem";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -8,21 +7,19 @@ interface DraggableContainerProps<T> {
   items: T[];
   renderItem: (props: RenderItemProps<T>) => JSX.Element;
   itemClassName: string;
-  moveItem: (dragIndex: number, hoverIndex: number) => void
+  moveItem: (dragIndex: number, hoverIndex: number) => void;
+  editingId: string | null;
+  setEditingId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export const DraggableContainer = <T extends ItemWithId>({
   items,
   renderItem,
   itemClassName,
-  moveItem
+  moveItem,
+  editingId,
+  setEditingId,
 }: DraggableContainerProps<T>): JSX.Element => {
-  const [editingId, setEditingId] = useState<string | null>(null);
-
-  const setEditing = (id: string | null) => {
-    setEditingId((prev) => (prev === id ? null : id));
-  };
-
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="flex flex-col">
@@ -33,7 +30,7 @@ export const DraggableContainer = <T extends ItemWithId>({
             index={index}
             moveItem={moveItem}
             isEditing={editingId === item.id}
-            setEditing={setEditing}
+            setEditing={setEditingId}
             renderItem={renderItem}
             itemClassName={itemClassName}
           />

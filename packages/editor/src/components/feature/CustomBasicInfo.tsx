@@ -19,6 +19,7 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
   const {
     items,
     editingId,
+    setEditingId,
     tempItem,
     setTempItem,
     handleAddItem,
@@ -79,6 +80,8 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
         items={items}
         moveItem={moveItem}
         renderItem={renderItem}
+        editingId={editingId}
+        setEditingId={setEditingId}
         itemClassName="border p-2"
       />
       <div className="mt-4 text-blue-500 text-[13px] cursor-pointer" onClick={handleAddItem}>

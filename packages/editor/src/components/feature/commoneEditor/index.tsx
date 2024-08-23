@@ -1,6 +1,6 @@
 import { useState, FunctionComponent } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
 // 定义props的类型
 interface RichTextEditorProps {
@@ -19,7 +19,7 @@ const RichTextEditor: FunctionComponent<RichTextEditorProps> = ({ value, onChang
   };
 
   return (
-    <div className="editor-container h-72 overflow-hidden">
+    <div className="editor-container h-72 overflow-hidden hover:cursor-default">
       <ReactQuill
         style={{ height: "200px" }}
         value={editorHtml}
@@ -56,7 +56,6 @@ const formats = [
   "strike",
   "blockquote",
   "list",
-  "bullet",
   "indent",
   "link",
   "image",

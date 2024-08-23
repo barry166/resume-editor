@@ -1,9 +1,8 @@
-import { DefaultTemplate } from "@resume/template";
+// import { DefaultTemplate } from "@resume/template";
 import Header from "@/components/feature/Header";
 import Editor from "./components/feature/Editor";
 
 function App() {
-  console.log("DefaultTemplate", DefaultTemplate);
   return (
     <div className="h-screen">
       <Header />
