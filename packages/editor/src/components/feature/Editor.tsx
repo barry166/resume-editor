@@ -4,7 +4,6 @@ import BasicInfo from "./BasicInfo";
 import { BlockItem, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
-import { cloneDeep } from "lodash-es";
 
 interface IProps {}
 

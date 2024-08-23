@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { addDays, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
@@ -42,10 +40,12 @@ export function DatePickerWithRange({
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, "LLL dd, y")} - {format(date.to, "LLL dd, y")}
+                  {/* {format(date.from, "LLL dd, y")} - {format(date.to, "LLL dd, y")} */}
+                  {format(date.from, "yyyy-MM")} - {format(date.to, "yyyy-MM")}
                 </>
               ) : (
-                format(date.from, "LLL dd, y")
+                // format(date.from, "LLL dd, y")
+                format(date.from, "yyyy-MM")
               )
             ) : (
               <span>Pick a date</span>
@@ -54,13 +54,15 @@ export function DatePickerWithRange({
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
           <Calendar
-            initialFocus
             mode="range"
+            numberOfMonths={2}
+            captionLayout="dropdown"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={handleChange}
-            numberOfMonths={2}
-          />
+            onSelect={setDate}
+            fromYear={1960}
+            toYear={2190}
+        />
         </PopoverContent>
       </Popover>
     </div>
