@@ -11,7 +11,7 @@ interface RichTextEditorProps {
 const RichTextEditor: FunctionComponent<RichTextEditorProps> = ({ value, onChange }) => {
   const [editorHtml, setEditorHtml] = useState<string>(value);
 
-  const handleChange = (content: string, delta: any, source: string, editor: any) => {
+  const handleChange = (content: string) => {
     setEditorHtml(content);
     if (onChange) {
       onChange(content);
@@ -19,7 +19,7 @@ const RichTextEditor: FunctionComponent<RichTextEditorProps> = ({ value, onChang
   };
 
   return (
-    <div className="editor-container h-72 overflow-hidden hover:cursor-default">
+    <div className="editor-container h-[16rem] overflow-hidden hover:cursor-default">
       <ReactQuill
         style={{ height: "200px" }}
         value={editorHtml}

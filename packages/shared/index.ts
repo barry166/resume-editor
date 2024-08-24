@@ -81,6 +81,9 @@ export interface BlockItem {
   /**条目内容 */
   content: string;
   /**时间区间 */
-  timeArea: [number, number];
+  timeArea: {
+    from: number | undefined;
+    to: number | undefined;
+  };
   [key: string]: any;
 }

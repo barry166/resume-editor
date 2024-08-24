@@ -12,7 +12,7 @@ interface IProps {
   item: BlockItem;
   itemLabelMap?: TItemLabelMap;
   onClose: (flag?: boolean) => void;
-  onChange: (id: string, key: string, value?: string | DateRange) => void;
+  onChange: (id: string, key: string, value?: any) => void;
 }
 
 const keysMap = ["title", "subTitle", "city", "timeArea", "content"];
@@ -23,11 +23,21 @@ const ComplexBlockEdit: React.FC<IProps> = (props) => {
     onChange(item.id, key, value);
   });
 
+  const handleTimeArea = (key: string, date: DateRange | undefined) => {
+    const changeDate: { from: number | undefined; to: number | undefined } = { from: 0, to: 0 };
+    if (date) {
+      // 转换成时间戳保存
+      changeDate.from = date.from && new Date(date.from).getTime();
+      changeDate.to = date.to && new Date(date.to).getTime();
+    }
+    onChange(item.id, key, changeDate);
+  };
+
   const renderItemByType = (key: string) => {
     switch (key) {
       case "timeArea":
         return (
-          <DatePickerWithRange className="w-full" onChange={(date) => handleChange(key, date)} />
+          <DatePickerWithRange className="w-full" onChange={(date) => handleTimeArea(key, date)} />
         );
       case "content":
         return (
