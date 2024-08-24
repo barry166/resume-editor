@@ -2,9 +2,11 @@ export interface Page {
   uuid: string;
   env: "runtime" | "design";
   templateId: string;
-  /**个人信息 */
+  /** 简历名称 */
+  title: string
+  /** 个人信息 */
   basicInfo: IBasicInfo;
-  /**自定义信息：github、linkedin */
+  /** 自定义信息：github、linkedin */
   customBasicInfo: CustomBasicInfoItem[];
   blocks: Block[];
 }

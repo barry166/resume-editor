@@ -73,3 +73,20 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.scroll-overlay {
+  overflow-y: auto;
+  scrollbar-color: gray transparent; /* Firefox */
+  scrollbar-width: thin; /* Firefox */
+
+  /* Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent; /* 使滚动条悬浮效果 */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+  }
+}

@@ -14,6 +14,7 @@ export const createDefaultPageConfig = (): Page => {
       email: "zhangsan@example.com",
       wechat: "zhangsan123",
     },
+    title: '自定义简历',
     customBasicInfo: [
       { id: "1", key: "Github", value: "http://github/barry166" },
       { id: "2", key: "Blog", value: "http://solkatt.vip" },
