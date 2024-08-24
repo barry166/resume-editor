@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { pageState } from "@/store";
 import BasicInfo from "./BasicInfo";
-import { BlockItem, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
+import { Block, BlockItem, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
 
@@ -30,7 +30,7 @@ const Editor: React.FC<IProps> = () => {
     }));
   };
 
-  const handleBlockChange = (id: string, items: BlockItem[]) => {
+  const handleBlockChange1 = (id: string, items: BlockItem[]) => {
     const targetBlock = page.blocks.find((block) => block.id === id);
     if (!targetBlock) return;
     setPage((prev) => ({
@@ -50,6 +50,21 @@ const Editor: React.FC<IProps> = () => {
     }));
   };
 
+  const handleBlockChange = (id: string, block: Block) => {
+    setPage((prev) => {
+      const newBlock = prev.blocks.map((item) => {
+        if (item.id === id) {
+          return block;
+        }
+        return item;
+      });
+      return {
+        ...prev,
+        blocks: newBlock,
+      };
+    });
+  };
+
   return (
     <div className=" px-6 py-6">
       {/* 基础信息编辑 */}
@@ -66,7 +81,8 @@ const Editor: React.FC<IProps> = () => {
           <BlockComponent
             key={id}
             {...config}
-            onChange={(items: BlockItem[]) => handleBlockChange(id, items)}
+            id={id}
+            onChange={(block: Block) => handleBlockChange(id, block)}
           />
         );
       })}

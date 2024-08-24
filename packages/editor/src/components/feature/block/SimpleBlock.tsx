@@ -3,19 +3,33 @@
  * @returns
  */
 
-import { BlockProps } from "@resume/shared";
+import { useRecoilValue } from "recoil";
 import BlockTitle from "../BlockTitle";
 import RichTextEditor from "../commoneEditor";
+import { IBlockComponentProps } from "@/types/block";
+import { blockState } from "@/store";
 
-function SimpleBlock(props: BlockProps) {
+function SimpleBlock(props: IBlockComponentProps) {
+  const { onChange } = props;
+  const block = useRecoilValue(blockState(props.id));
+  const { config: { title, content } = {} } = block;
+
   const handleChange = (content: string) => {
-    console.log("rich text", content);
+    // console.log("rich text", content);
+    const newBlock = {
+      ...block,
+      config: {
+        ...block.config,
+        content,
+      },
+    };
+    onChange(newBlock);
   };
 
   return (
     <div className="simple-block">
-      <BlockTitle text="自定义内容" />
-      <RichTextEditor value={props.content || ""} onChange={handleChange} />
+      <BlockTitle value={title} />
+      <RichTextEditor value={content || ""} onChange={handleChange} />
     </div>
   );
 }

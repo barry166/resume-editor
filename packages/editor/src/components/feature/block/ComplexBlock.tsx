@@ -1,4 +1,5 @@
-import { BlockItem, BlockProps } from "@resume/shared";
+import { Block, BlockItem } from "@resume/shared";
+import { blockState } from "@/store";
 import BlockTitle from "../BlockTitle";
 import { DraggableContainer } from "../DragDropContainer";
 import { useDragAction } from "@/hooks/useDragAction";
@@ -6,62 +7,62 @@ import CommonDragAction from "../CommonDragAction";
 import ComplexItemDisplay from "./ComplexItemDisplay";
 import ComplexBlockEdit from "./ComplexBlockEdit";
 import { cloneDeep } from "lodash-es";
+import { useRecoilValue } from "recoil";
 
-interface IProps extends BlockProps {
-  onChange: (items: any[]) => void;
+interface IProps {
+  id: string;
+  onChange: (block: Block) => void;
 }
 function ComplexBlock(props: IProps) {
-  const { items: value = [], onChange, itemLabelMap } = props;
+  const block = useRecoilValue(blockState(props.id));
+  const { onChange } = props;
+  const { config: { items: value = [], title, itemLabelMap } = {} } = block;
+
+  const handleBlockItemChange = (items: BlockItem[]) => {
+    const newBlock = {
+      ...block,
+      config: {
+        ...block.config,
+        items,
+      },
+    };
+    onChange(newBlock);
+  };
+
+  const handleTitleChange = (title: string) => {
+    const newBlock = {
+      ...block,
+      config: {
+        ...block.config,
+        title,
+      },
+    };
+    onChange(newBlock);
+  };
+
   const {
     items,
     editingId,
     setEditingId,
-    tempItem,
-    setTempItem,
     handleAddItem,
     handleEditItem,
-    handleSaveCreateItem,
     handleCancelEdit,
     handleDeleteItem,
     moveItem,
-  } = useDragAction(value, onChange);
+  } = useDragAction(value, handleBlockItemChange);
 
   const handleItemChange = (id: string, key: string, value?: any) => {
     const newItems = cloneDeep(items);
     const targetItem = newItems.find((item) => item.id === id);
     if (!targetItem) return;
     targetItem[key] = value;
-    onChange(newItems);
+    handleBlockItemChange(newItems);
   };
 
   const renderItem = ({ item }: { item: BlockItem }) => {
     return (
       <div className="flex flex-1 items-center justify-between p-2">
         {editingId === item.id ? (
-          // <>
-          //   <Input
-          //     type="text"
-          //     value={tempItem?.key || ""}
-          //     className="flex-1"
-          //     onChange={(e) =>
-          //       setTempItem((prev: BlockItem | null) => ({ ...prev!, key: e.target.value }))
-          //     }
-          //   />
-          //   <Input
-          //     type="text"
-          //     value={tempItem?.value || ""}
-          //     className="ml-8 mr-8 flex-1"
-          //     onChange={(e) =>
-          //       setTempItem((prev: BlockItem | null) => ({ ...prev!, value: e.target.value }))
-          //     }
-          //   />
-          //   <Button size="sm" onClick={handleSaveCreateItem}>
-          //     {item.key ? "保存" : "创建"}
-          //   </Button>
-          //   <Button size="sm" variant="secondary" onClick={handleCancelEdit} className="ml-2">
-          //     取消
-          //   </Button>
-          // </>
           <ComplexBlockEdit
             item={item}
             itemLabelMap={itemLabelMap}
@@ -83,8 +84,8 @@ function ComplexBlock(props: IProps) {
   };
 
   return (
-    <div className="complex-block">
-      <BlockTitle text={props.title} />
+    <div className="complex-block mt-2">
+      <BlockTitle value={title || ""} onChange={handleTitleChange} canEdit={true} />
       <DraggableContainer
         items={items || []}
         moveItem={moveItem}

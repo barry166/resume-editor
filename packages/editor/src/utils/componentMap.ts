@@ -2,13 +2,9 @@
  * block组件映射
  */
 import { SimpleBlock, ComplexBlock } from "@/components/feature/block";
-import { BlockProps } from "@resume/shared";
+import { IBlockComponentProps } from "@/types/block";
 
-interface IProps extends BlockProps {
-  onChange: (items: any[]) => void;
-}
-
-export const componentMap: Record<"simple" | "complex", React.FC<IProps>> = {
+export const componentMap: Record<"simple" | "complex", React.FC<IBlockComponentProps>> = {
   simple: SimpleBlock,
   complex: ComplexBlock,
 };

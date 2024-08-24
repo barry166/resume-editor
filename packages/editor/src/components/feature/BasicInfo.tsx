@@ -28,7 +28,7 @@ export default function BasicInfo(props: IProps) {
 
   return (
     <div className="">
-      <BlockTitle text="基本信息" />
+      <BlockTitle value="基本信息" />
 
       <div className="flex flex-wrap -mx-2">
         {keys.map((key) => (

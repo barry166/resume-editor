@@ -75,7 +75,7 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
 
   return (
     <>
-      <BlockTitle text="自定义内容" />
+      <BlockTitle value="自定义内容" />
       <DraggableContainer
         items={items}
         moveItem={moveItem}
