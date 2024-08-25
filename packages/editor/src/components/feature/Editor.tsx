@@ -46,7 +46,7 @@ const Editor: React.FC<IProps> = () => {
   };
 
   return (
-    <div className=" px-6 py-6">
+    <div className="px-6 py-6">
       {/* 基础信息编辑 */}
       <BasicInfo value={page.basicInfo} onChange={handleBasicInfoChange} />
       {/* 自定义基础信息编辑 */}
