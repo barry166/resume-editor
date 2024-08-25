@@ -49,7 +49,7 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
           <Button size="sm" onClick={handleSaveCreateItem}>
             {item.key ? "保存" : "创建"}
           </Button>
-          <Button size="sm" variant="secondary" onClick={handleCancelEdit} className="ml-2">
+          <Button size="sm" variant="secondary" onClick={() => handleCancelEdit()} className="ml-2">
             取消
           </Button>
         </>

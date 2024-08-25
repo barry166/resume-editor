@@ -6,16 +6,18 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   plugins: [
     react(),
-    dts({
-      insertTypesEntry: true, // 这会在输出目录中生成一个 .d.ts 文件
-      // 其他配置项如需要可以在这里添加
-    }),
+    // dts({
+    //   insertTypesEntry: true, // 这会在输出目录中生成一个 .d.ts 文件
+    //   // 其他配置项如需要可以在这里添加
+    // }),
   ],
   build: {
+    outDir: "dist",
     // 库模式配置
     lib: {
       entry: "src/index.ts", // 你的库入口文件
-      name: "Template",
+      name: "TemplateUI",
+      formats: ["es", "umd"],
       // 输出的文件名，可以根据需要在下方自定义
       fileName: (format) => `index.${format}.js`,
     },

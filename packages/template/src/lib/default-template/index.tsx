@@ -3,5 +3,5 @@ export interface IProps {
 }
 export default function DefaultTemplate(props: IProps) {
   console.log('props', props)
-  return <>default template</>;
+  return <div className=" px-2">default template233</div>;
 }

@@ -1,16 +1,15 @@
 {
   "name": "@resume/template",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
-  "module": "src/index.ts",
-  "types": "dist/index.es.d.ts",
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "build:dts": "tsc --declaration --emitDeclarationOnly",
     "lint": "eslint .",
     "preview": "vite preview"

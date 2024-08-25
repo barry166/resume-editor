@@ -13,11 +13,6 @@
     "@types/node": "^22.3.0"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21",
-    "react-day-picker": "^9.0.8",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
-    "react-quill-new": "^3.3.0",
-    "recoil": "^0.7.7"
+    "lodash-es": "^4.17.21"
   }
 }

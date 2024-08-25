@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { pageState } from "@/store";
 import BasicInfo from "./BasicInfo";
-import { Block, BlockItem, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
+import { Block, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
 
@@ -27,26 +27,6 @@ const Editor: React.FC<IProps> = () => {
     setPage((prev) => ({
       ...prev,
       customBasicInfo: items,
-    }));
-  };
-
-  const handleBlockChange1 = (id: string, items: BlockItem[]) => {
-    const targetBlock = page.blocks.find((block) => block.id === id);
-    if (!targetBlock) return;
-    setPage((prev) => ({
-      ...prev,
-      blocks: page.blocks.map((block) => {
-        if (block.id === id) {
-          return {
-            ...block,
-            config: {
-              ...block.config,
-              items,
-            },
-          };
-        }
-        return block;
-      }),
     }));
   };
 

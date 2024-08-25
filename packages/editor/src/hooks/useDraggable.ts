@@ -1,4 +1,4 @@
-import { useDrag, useDrop, DragSourceMonitor, DropTargetMonitor } from "react-dnd";
+import { useDrag, useDrop, DragSourceMonitor } from "react-dnd";
 
 interface DragItem {
   id: number;
@@ -22,7 +22,7 @@ export const useDraggable = (
 
   const [, drop] = useDrop({
     accept: type,
-    hover(item: DragItem, monitor: DropTargetMonitor) {
+    hover(item: DragItem) {
       if (item.index !== index) {
         moveItem(item.index, index);
         item.index = index;
