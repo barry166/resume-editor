@@ -1,7 +1,7 @@
-export { default as DefaultTemplate } from "./lib/default-template";
-export { default as TemplateBlue } from "./lib/template-blue";
+import { lazy } from "react";
+import './style.css'
 
 export const templateMap = {
-  default: "DefaultTemplate",
-  blue: 'TemplateBlue'
+  default: lazy(() => import("./lib/default-template")),
+  blue: lazy(() => import("./lib/template-blue")),
 };

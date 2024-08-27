@@ -1,12 +1,16 @@
 // import { Button } from "@/components/ui/button";
-import { DefaultTemplate } from "@resume/template";
+import { templateMap } from "@resume/template";
+// import style from "@resume/template/dist/style.css";
+import { Suspense } from "react";
+
+const DefaultTemplate = templateMap.default;
 
 const Preview = () => {
-  
+  // console.log("style", style);
   return (
-    <div>
-      <DefaultTemplate config={''} />
-    </div>
+    <Suspense fallback="template loading">
+      <DefaultTemplate config={"design mode1"} />
+    </Suspense>
   );
 };
 
