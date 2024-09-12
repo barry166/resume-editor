@@ -3,7 +3,7 @@ export interface Page {
   env: "runtime" | "design";
   templateId: string;
   /** 简历名称 */
-  title: string
+  title: string;
   /** 个人信息 */
   basicInfo: IBasicInfo;
   /** 自定义信息：github、linkedin */
@@ -52,8 +52,10 @@ export type BlockType = "simple" | "complex";
 export type BlockProps = {
   /**模块名称 */
   title: string;
+  /**内容模块描述-工作经历、教育经历等 */
+  type?: string;
   /**描述内容-简单模块 */
-  content?: string;
+  content?: any;
   /**复杂模块条目 */
   items?: BlockItem[];
   /**复杂模块展示名称 */

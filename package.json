@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd packages/editor && pnpm dev"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +14,13 @@
     "@types/node": "^22.3.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
+    "sass": "^1.78.0",
     "tailwindcss": "^3.4.10",
     "vite-plugin-css-injected-by-js": "^3.5.1"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "dayjs": "^1.11.13",
+    "lodash-es": "^4.17.21",
+    "lucide-react": "^0.427.0"
   }
 }

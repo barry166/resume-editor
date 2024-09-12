@@ -14,7 +14,7 @@ export const createDefaultPageConfig = (): Page => {
       email: "zhangsan@example.com",
       wechat: "zhangsan123",
     },
-    title: '自定义简历',
+    title: "自定义简历",
     customBasicInfo: [
       { id: "1", key: "Github", value: "http://github/barry166" },
       { id: "2", key: "Blog", value: "http://solkatt.vip" },
@@ -41,6 +41,10 @@ export const createDefaultPageConfig = (): Page => {
               content: "前端开发工程师。。。",
               subTitle: "高级前端开发",
               city: "北京",
+              timeArea: {
+                from: 1642608000000,
+                to: 1644422400000,
+              },
             },
             {
               id: "2",
@@ -48,6 +52,10 @@ export const createDefaultPageConfig = (): Page => {
               content: "全栈开发工程师。。。",
               subTitle: "高级前端开发",
               city: "北京",
+              timeArea: {
+                from: 1642608000000,
+                to: 1644422400000,
+              },
             },
           ],
           itemLabelMap: {
