@@ -68,6 +68,34 @@ export const createDefaultPageConfig = (): Page => {
         },
       },
       {
+        id: "project",
+        type: "complex",
+        config: {
+          title: "项目经历",
+          isMultiFile: false,
+          items: [
+            {
+              id: "123",
+              title: "KMS（AI智能体平台）",
+              content: "",
+              timeArea: {
+                from: 1642608000000,
+                to: 1644422400000,
+              },
+            },
+            {
+              id: "456",
+              title: "MK低代码平台",
+              content: "",
+              timeArea: {
+                from: 1642608000000,
+                to: 1644422400000,
+              },
+            },
+          ],
+        },
+      },
+      {
         id: "4",
         type: "complex",
         config: {

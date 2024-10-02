@@ -11,7 +11,8 @@ export default function DefaultTemplate(props: IProps) {
 
   const renderHeader = () => {
     const { basicInfo, customBasicInfo = [] } = config;
-    const { realName, mobile, jobTitle, birthDate, location, email } = basicInfo || {};
+    const { realName, mobile, jobTitle, birthDate, location, email } =
+      basicInfo || {};
     return (
       <header className="flex flex-col justify-center items-center">
         <div className="flex items-center">
@@ -28,7 +29,10 @@ export default function DefaultTemplate(props: IProps) {
 
           {email && (
             <span className="ml-3 flex items-center">
-              <a href={`mailto:${email}`} className="flex items-center text-blue-500">
+              <a
+                href={`mailto:${email}`}
+                className="flex items-center text-blue-500"
+              >
                 <Mail size={16} className="mr-1" />
                 {email}
               </a>
@@ -68,6 +72,22 @@ export default function DefaultTemplate(props: IProps) {
     );
   };
 
+  const renderBlockByType = (
+    type: "simple" | "complex" | "tag",
+    blockConfig: BlockProps,
+  ) => {
+    switch (type) {
+      case "simple":
+        return renderSimpleBlock(blockConfig);
+      case "complex":
+        return renderComplexBlock(blockConfig);
+      case "tag":
+        return renderTagBlock(blockConfig);
+      default:
+        return null;
+    }
+  };
+
   const renderSectionContent = () => {
     const { blocks = [] } = config;
     return blocks.map((block) => {
@@ -76,16 +96,40 @@ export default function DefaultTemplate(props: IProps) {
       return (
         <div className="content-block mt-7" key={id}>
           <header>
-            <h2 className="text-xl font-semibold mb-2 border-l-4 pl-3 py-1">{title}</h2>
+            <h2 className="text-xl font-semibold mb-2 border-l-4 pl-3 py-1">
+              {title}
+            </h2>
           </header>
-          {type === "complex" ? renderComplexBlock(blockConfig) : renderSimpleBlock(blockConfig)}
+          {renderBlockByType(type, blockConfig)}
         </div>
       );
     });
   };
 
   const renderSimpleBlock = (blockConfig: BlockProps) => {
-    return <div className="py-2" dangerouslySetInnerHTML={{ __html: blockConfig?.content }}></div>;
+    return (
+      <div
+        className="py-2"
+        dangerouslySetInnerHTML={{ __html: blockConfig?.content }}
+      ></div>
+    );
+  };
+
+  const renderTagBlock = (blockConfig: BlockProps) => {
+    const { items = [] } = blockConfig;
+
+    return (
+      <div className="mt-4 flex gap-2 flex-wrap">
+        {items?.map((item) => (
+          <div
+            key={item.id}
+            className="border border-blue-500 px-2 py-1 text-blue-500"
+          >
+            {item.content}
+          </div>
+        ))}
+      </div>
+    );
   };
 
   const renderComplexBlock = (blockConfig: BlockProps) => {
@@ -98,7 +142,7 @@ export default function DefaultTemplate(props: IProps) {
             <div className="item mb-4" key={id}>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
-                  <span className="text-lg font-semibold">{`${title} - ${subTitle}`}</span>
+                  <span className="text-lg font-semibold">{`${title}  ${subTitle ? "-" + subTitle : ""}`}</span>
                   {city && (
                     <span className="flex items-center ml-3">
                       <MapPin size={16} className="mr-1" />
@@ -108,12 +152,17 @@ export default function DefaultTemplate(props: IProps) {
                 </div>
                 {timeArea && timeArea.from && timeArea.to && (
                   <div className="md:text-right text-gray-500 tracking-wider">{`${dayjs(
-                    timeArea.from
-                  ).format("YYYY/MM")} - ${dayjs(timeArea.to).format("YYYY/MM")}`}</div>
+                    timeArea.from,
+                  ).format(
+                    "YYYY/MM",
+                  )} - ${dayjs(timeArea.to).format("YYYY/MM")}`}</div>
                 )}
               </div>
               {content && (
-                <div className="item-content" dangerouslySetInnerHTML={{ __html: content }} />
+                <div
+                  className="item-content"
+                  dangerouslySetInnerHTML={{ __html: content }}
+                />
               )}
             </div>
           );

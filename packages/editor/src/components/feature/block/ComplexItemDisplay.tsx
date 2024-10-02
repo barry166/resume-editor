@@ -1,9 +1,11 @@
 import { BlockItem } from "@resume/shared";
 
-interface IProps extends BlockItem {}
+interface IProps extends BlockItem {
+  isMultiFile?: boolean;
+}
 
 const ComplexItemDisplay: React.FC<IProps> = (props) => {
-  const { title, subTitle, city, timeArea } = props;
+  const { title, subTitle, city, timeArea, isMultiFile = true } = props;
 
   const renderTime = (timeArea: BlockItem["timeArea"]) => {
     if (timeArea && timeArea.from && timeArea.to) {
@@ -31,10 +33,12 @@ const ComplexItemDisplay: React.FC<IProps> = (props) => {
         <span>{title}</span>
         <span className="ml-2">{subTitle ? `-  ${subTitle}` : ""}</span>
       </div>
-      <div className="mt-2 text-zinc-400">
-        <span className="w-10">{city}</span>
-        <span className="ml-3">{renderTime(timeArea)}</span>
-      </div>
+      {isMultiFile && (
+        <div className="mt-2 text-zinc-400">
+          <span className="w-10">{city}</span>
+          <span className="ml-3">{renderTime(timeArea)}</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -16,7 +16,9 @@ interface IProps {
 function ComplexBlock(props: IProps) {
   const block = useRecoilValue(blockState(props.id));
   const { onChange } = props;
-  const { config: { items: value = [], title, itemLabelMap } = {} } = block;
+  const {
+    config: { items: value = [], title, itemLabelMap, isMultiFile } = {},
+  } = block;
 
   const handleBlockItemChange = (items: BlockItem[]) => {
     const newBlock = {
@@ -71,7 +73,7 @@ function ComplexBlock(props: IProps) {
           />
         ) : (
           <>
-            <ComplexItemDisplay {...item} />
+            <ComplexItemDisplay {...item} isMultiFile={isMultiFile} />
             <CommonDragAction
               item={item}
               onEditItem={handleEditItem}
