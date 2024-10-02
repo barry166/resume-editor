@@ -38,18 +38,27 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
             type="text"
             value={tempItem?.key || ""}
             className="flex-1"
-            onChange={(e) => setTempItem((prev) => ({ ...prev!, key: e.target.value }))}
+            onChange={(e) =>
+              setTempItem((prev) => ({ ...prev!, key: e.target.value }))
+            }
           />
           <Input
             type="text"
             value={tempItem?.value || ""}
             className="ml-8 mr-8 flex-1"
-            onChange={(e) => setTempItem((prev) => ({ ...prev!, value: e.target.value }))}
+            onChange={(e) =>
+              setTempItem((prev) => ({ ...prev!, value: e.target.value }))
+            }
           />
           <Button size="sm" onClick={handleSaveCreateItem}>
             {item.key ? "保存" : "创建"}
           </Button>
-          <Button size="sm" variant="secondary" onClick={() => handleCancelEdit()} className="ml-2">
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => handleCancelEdit()}
+            className="ml-2"
+          >
             取消
           </Button>
         </>
@@ -57,7 +66,11 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
         <>
           <span className="w-40 ml-4">{item.key}</span>
           <span className="flex-1">{item.value}</span>
-          <Button size="sm" variant="secondary" onClick={() => handleEditItem(item.id, item)}>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => handleEditItem(item.id, item)}
+          >
             编辑
           </Button>
           <Button
@@ -84,7 +97,10 @@ const CustomBasicInfo: React.FC<IProps> = ({ value, onChange }) => {
         setEditingId={setEditingId}
         itemClassName="border p-2"
       />
-      <div className="mt-4 text-blue-500 text-[13px] cursor-pointer" onClick={handleAddItem}>
+      <div
+        className="mt-4 text-blue-500 text-[13px] cursor-pointer"
+        onClick={handleAddItem}
+      >
         + 添加新的内容
       </div>
     </>

@@ -21,7 +21,12 @@ export const DraggableItem = <T extends ItemWithId>({
   renderItem,
   itemClassName,
 }: DraggableItemProps<T>): JSX.Element => {
-  const { isDragging, drag, drop, preview } = useDraggable("item", item.id, index, moveItem);
+  const { isDragging, drag, drop, preview } = useDraggable(
+    "item",
+    item.id,
+    index,
+    moveItem,
+  );
 
   return (
     <div

@@ -22,7 +22,10 @@ export default function BasicInfo(props: IProps) {
   // console.log("basicinfo", props);
   const { value, onChange } = props;
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof IBasicInfo) => {
+  const onInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: keyof IBasicInfo,
+  ) => {
     onChange(key, e.target.value);
   };
 

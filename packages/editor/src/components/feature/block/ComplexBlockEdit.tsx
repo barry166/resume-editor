@@ -17,14 +17,17 @@ interface IProps {
 
 const keysMap = ["title", "subTitle", "city", "timeArea", "content"];
 const ComplexBlockEdit: React.FC<IProps> = (props) => {
-  const { item, itemLabelMap, onClose, onChange } = props;
+  const { item, itemLabelMap, isMultiFile = true, onClose, onChange } = props;
 
   const handleChange = debounce((key: string, value?: string | DateRange) => {
     onChange(item.id, key, value);
   });
 
   const handleTimeArea = (key: string, date: DateRange | undefined) => {
-    const changeDate: { from: number | undefined; to: number | undefined } = { from: 0, to: 0 };
+    const changeDate: { from: number | undefined; to: number | undefined } = {
+      from: 0,
+      to: 0,
+    };
     if (date) {
       // 转换成时间戳保存
       changeDate.from = date.from && new Date(date.from).getTime();
@@ -37,11 +40,17 @@ const ComplexBlockEdit: React.FC<IProps> = (props) => {
     switch (key) {
       case "timeArea":
         return (
-          <DatePickerWithRange className="w-full" onChange={(date) => handleTimeArea(key, date)} />
+          <DatePickerWithRange
+            className="w-full"
+            onChange={(date) => handleTimeArea(key, date)}
+          />
         );
       case "content":
         return (
-          <RichTextEditor value={item[key]} onChange={(content) => handleChange(key, content)} />
+          <RichTextEditor
+            value={item[key]}
+            onChange={(content) => handleChange(key, content)}
+          />
         );
       default:
         return (
@@ -58,9 +67,12 @@ const ComplexBlockEdit: React.FC<IProps> = (props) => {
   const renderFormItem = () => {
     return keysMap.map((key, index) => {
       const className = `flex flex-col ${key === "content" ? "w-full" : "md:w-1/2"}  mb-4 px-2`;
+      if (isMultiFile && (key === "subTitle" || key === "city")) {
+        return null;
+      }
       return (
         <div key={index} className={className}>
-          <label className="w-20 flex-shrink-0 mr-2 flex items-center text-[14px] text-gray-500">
+          <label className="w-25 flex-shrink-0 mr-2 flex items-center text-[14px] text-gray-500">
             {itemLabelMap?.[key] || defaultBlockItenLabelMap[key]}
           </label>
           <div className="mt-2 w-full">{renderItemByType(key)}</div>
@@ -82,7 +94,11 @@ const ComplexBlockEdit: React.FC<IProps> = (props) => {
       </div>
       <div className="mt-4 flex flex-wrap -mx-2">{renderFormItem()}</div>
       <div className="close-wrapper -mt-4">
-        <Button variant="outline" className=" text-green-400" onClick={() => onClose(true)}>
+        <Button
+          variant="outline"
+          className=" text-green-400"
+          onClick={() => onClose(true)}
+        >
           关闭并继续
         </Button>
       </div>

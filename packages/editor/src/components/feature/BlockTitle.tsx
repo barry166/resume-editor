@@ -14,7 +14,11 @@ const BlockTitle = ({
   const inputRef = useRef<HTMLInputElement | null>(null); // 引用输入框元素
 
   const handleOutsideClick = (event: MouseEvent) => {
-    if (inputRef.current && !inputRef.current.contains(event.target as Node) && isEdit) {
+    if (
+      inputRef.current &&
+      !inputRef.current.contains(event.target as Node) &&
+      isEdit
+    ) {
       setIsEdit(false);
     }
   };
@@ -39,7 +43,9 @@ const BlockTitle = ({
           />
         ) : (
           <>
-            <h3 className="scroll-m-20 text-xl font-semibold tracking-tight mb-4 mt-4">{value}</h3>
+            <h3 className="scroll-m-20 text-xl font-semibold tracking-tight mb-4 mt-4">
+              {value}
+            </h3>
             {canEdit && (
               <Pencil
                 size={16}

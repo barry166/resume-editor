@@ -4,6 +4,7 @@ import BasicInfo from "./BasicInfo";
 import { Block, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
+import AddCustomBlock from "./AddCustomBlock";
 
 interface IProps {}
 
@@ -50,7 +51,10 @@ const Editor: React.FC<IProps> = () => {
       {/* 基础信息编辑 */}
       <BasicInfo value={page.basicInfo} onChange={handleBasicInfoChange} />
       {/* 自定义基础信息编辑 */}
-      <CustomBasicInfo value={page.customBasicInfo} onChange={handleCustomBasicInfoChange} />
+      <CustomBasicInfo
+        value={page.customBasicInfo}
+        onChange={handleCustomBasicInfoChange}
+      />
 
       {/* 区域块逻辑渲染 */}
       {page.blocks.map((block) => {
@@ -66,6 +70,8 @@ const Editor: React.FC<IProps> = () => {
           />
         );
       })}
+
+      <AddCustomBlock />
     </div>
   );
 };

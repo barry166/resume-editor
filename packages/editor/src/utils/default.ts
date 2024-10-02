@@ -26,7 +26,8 @@ export const createDefaultPageConfig = (): Page => {
         type: "simple",
         config: {
           title: "个人简介",
-          content: "拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。",
+          content:
+            "拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。",
         },
       },
       {
@@ -66,12 +67,51 @@ export const createDefaultPageConfig = (): Page => {
           },
         },
       },
+      {
+        id: "4",
+        type: "complex",
+        config: {
+          title: "教育经历",
+          isMultiFile: true,
+          items: [
+            {
+              id: "1",
+              title: "公司A",
+              content: "前端开发工程师。。。",
+              subTitle: "高级前端开发",
+              city: "北京",
+              timeArea: {
+                from: 1642608000000,
+                to: 1644422400000,
+              },
+            },
+          ],
+          itemLabelMap: {
+            title: "学校名称",
+            subTitle: "最高学历",
+            timeArea: "起止时间",
+            city: "专业",
+            content: "描述",
+          },
+        },
+      },
+      {
+        id: "5",
+        type: "tag",
+        config: {
+          title: "爱好标签",
+          items: [
+            { id: "11", content: "前端开发" },
+            { id: "22", content: "React" },
+          ],
+        },
+      },
     ],
   };
 };
 
 export const defaultBlockItenLabelMap = {
-  name: "条目名称",
+  title: "条目名称",
   content: "条目内容",
   timeArea: "开始&结束时间",
 } as TItemLabelMap;

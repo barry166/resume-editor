@@ -85,7 +85,11 @@ function ComplexBlock(props: IProps) {
 
   return (
     <div className="complex-block mt-2">
-      <BlockTitle value={title || ""} onChange={handleTitleChange} canEdit={true} />
+      <BlockTitle
+        value={title || ""}
+        onChange={handleTitleChange}
+        canEdit={true}
+      />
       <DraggableContainer
         items={items || []}
         moveItem={moveItem}
@@ -94,7 +98,10 @@ function ComplexBlock(props: IProps) {
         renderItem={renderItem}
         itemClassName="border p-2"
       />
-      <div className="mt-4 text-blue-500 text-[13px] cursor-pointer" onClick={handleAddItem}>
+      <div
+        className="mt-4 text-blue-500 text-[13px] cursor-pointer"
+        onClick={handleAddItem}
+      >
         + 添加新的内容
       </div>
     </div>

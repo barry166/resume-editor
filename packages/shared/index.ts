@@ -47,13 +47,15 @@ export enum BasicInfoKey {
   wechat = "微信号",
 }
 
-export type BlockType = "simple" | "complex";
+export type BlockType = "simple" | "complex" | "tag";
 
 export type BlockProps = {
   /**模块名称 */
   title: string;
   /**内容模块描述-工作经历、教育经历等 */
   type?: string;
+  /**是否展示多个字段 */
+  isMultiFile?: boolean;
   /**描述内容-简单模块 */
   content?: any;
   /**复杂模块条目 */
@@ -77,7 +79,7 @@ export interface Block {
 export interface BlockItem {
   id: string;
   /**条目名称 */
-  title: string;
+  title?: string;
   /**副标题 */
   subTitle?: string;
   /**城市 */
