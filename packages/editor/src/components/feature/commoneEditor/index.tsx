@@ -8,7 +8,10 @@ interface RichTextEditorProps {
   onChange?: (content: string) => void;
 }
 
-const RichTextEditor: FunctionComponent<RichTextEditorProps> = ({ value, onChange }) => {
+const RichTextEditor: FunctionComponent<RichTextEditorProps> = ({
+  value,
+  onChange,
+}) => {
   const [editorHtml, setEditorHtml] = useState<string>(value);
 
   const handleChange = (content: string) => {
@@ -37,10 +40,16 @@ const modules = {
     [{ header: "1" }, { header: "2" }, { font: [] }],
     [{ size: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
     ["link", "image", "video"],
     ["clean"],
   ],
+  direction: "rtl",
   clipboard: {
     matchVisual: false,
   },

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 富文本编辑器 */
+.ql-snow .ql-editor ol,
+.ql-snow .ql-editor li {
+    list-style-position: inside;
+    padding-left: 0.5em;
+}
+.ql-snow .ql-editor ol li {
+    padding-left: 0;
+}

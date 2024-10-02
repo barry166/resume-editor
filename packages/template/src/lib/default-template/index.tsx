@@ -108,10 +108,12 @@ export default function DefaultTemplate(props: IProps) {
 
   const renderSimpleBlock = (blockConfig: BlockProps) => {
     return (
-      <div
-        className="py-2"
-        dangerouslySetInnerHTML={{ __html: blockConfig?.content }}
-      ></div>
+      <div className="ql-snow w-full ">
+        <div
+          className="ql-editor"
+          dangerouslySetInnerHTML={{ __html: blockConfig?.content }}
+        />
+      </div>
     );
   };
 
@@ -159,10 +161,12 @@ export default function DefaultTemplate(props: IProps) {
                 )}
               </div>
               {content && (
-                <div
-                  className="item-content"
-                  dangerouslySetInnerHTML={{ __html: content }}
-                />
+                <div className="ql-snow w-full ">
+                  <div
+                    className="ql-editor"
+                    dangerouslySetInnerHTML={{ __html: content }}
+                  />
+                </div>
               )}
             </div>
           );
