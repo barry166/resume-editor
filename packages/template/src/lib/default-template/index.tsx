@@ -110,7 +110,7 @@ export default function DefaultTemplate(props: IProps) {
     return (
       <div className="ql-snow w-full ">
         <div
-          className="ql-editor"
+          className="ql-editor mx-[-12px] my[-15px]"
           dangerouslySetInnerHTML={{ __html: blockConfig?.content }}
         />
       </div>
@@ -163,7 +163,7 @@ export default function DefaultTemplate(props: IProps) {
               {content && (
                 <div className="ql-snow w-full ">
                   <div
-                    className="ql-editor"
+                    className="ql-editor mx-[-12px] my[-15px]"
                     dangerouslySetInnerHTML={{ __html: content }}
                   />
                 </div>
