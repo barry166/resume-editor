@@ -49,7 +49,6 @@ const modules = {
     ["link", "image", "video"],
     ["clean"],
   ],
-  direction: "rtl",
   clipboard: {
     matchVisual: false,
   },

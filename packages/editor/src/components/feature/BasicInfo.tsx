@@ -20,7 +20,7 @@ const keys: Array<keyof IBasicInfo> = [
 
 export default function BasicInfo(props: IProps) {
   // console.log("basicinfo", props);
-  const { value, onChange } = props;
+  const { value, onChange, id } = props;
 
   const onInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,

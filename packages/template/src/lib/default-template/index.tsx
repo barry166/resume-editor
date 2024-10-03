@@ -91,10 +91,10 @@ export default function DefaultTemplate(props: IProps) {
   const renderSectionContent = () => {
     const { blocks = [] } = config;
     return blocks.map((block) => {
-      const { id, type, config: blockConfig } = block;
+      const { id, type, config: blockConfig, style } = block;
       const { title } = blockConfig;
       return (
-        <div className="content-block mt-7" key={id}>
+        <div className="content-block mt-7" key={id} style={style}>
           <header>
             <h2 className="text-xl font-semibold mb-2 border-l-4 pl-3 py-1">
               {title}

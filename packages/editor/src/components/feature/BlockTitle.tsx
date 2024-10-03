@@ -1,11 +1,14 @@
 import { SquarePen } from "lucide-react";
 import useTitleEdit from "@/hooks/useTitleEdit";
+import BlockTitleAction from "./BlockTitleAction";
 
 const BlockTitle = ({
+  id,
   value,
   onChange,
   canEdit = false,
 }: {
+  id?: string;
   value?: string;
   onChange?: (value: string) => void;
   canEdit?: boolean;
@@ -38,6 +41,8 @@ const BlockTitle = ({
           </>
         )}
       </div>
+
+      {id && <BlockTitleAction blockId={id} />}
     </div>
   );
 };

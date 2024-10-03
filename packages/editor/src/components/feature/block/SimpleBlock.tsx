@@ -28,7 +28,7 @@ function SimpleBlock(props: IBlockComponentProps) {
 
   return (
     <div className="simple-block">
-      <BlockTitle value={title} />
+      <BlockTitle id={props.id} value={title} />
       <RichTextEditor value={content || ""} onChange={handleChange} />
     </div>
   );

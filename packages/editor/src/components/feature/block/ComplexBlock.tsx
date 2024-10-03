@@ -88,6 +88,7 @@ function ComplexBlock(props: IProps) {
   return (
     <div className="complex-block mt-2">
       <BlockTitle
+        id={props.id}
         value={title || ""}
         onChange={handleTitleChange}
         canEdit={true}

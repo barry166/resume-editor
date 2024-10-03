@@ -50,6 +50,7 @@ const TagBlock = (props: IBlockComponentProps) => {
   return (
     <div className="mt-4">
       <BlockTitle
+        id={props.id}
         value={title || ""}
         onChange={handleTitleChange}
         canEdit={true}
