@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export interface Page {
   uuid: string;
   env: "runtime" | "design";
@@ -74,6 +76,7 @@ export interface Block {
   type: BlockType;
   /**传递给组件的配置props */
   config: BlockProps;
+  style?: CSSProperties;
 }
 
 export interface BlockItem {

@@ -1,5 +1,5 @@
-import { Pencil } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { SquarePen } from "lucide-react";
+import useTitleEdit from "@/hooks/useTitleEdit";
 
 const BlockTitle = ({
   value,
@@ -10,28 +10,10 @@ const BlockTitle = ({
   onChange?: (value: string) => void;
   canEdit?: boolean;
 }) => {
-  const [isEdit, setIsEdit] = useState(false);
-  const inputRef = useRef<HTMLInputElement | null>(null); // 引用输入框元素
-
-  const handleOutsideClick = (event: MouseEvent) => {
-    if (
-      inputRef.current &&
-      !inputRef.current.contains(event.target as Node) &&
-      isEdit
-    ) {
-      setIsEdit(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isEdit]);
+  const { isEdit, setIsEdit, inputRef } = useTitleEdit();
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between h-12">
       <div className="flex items-center">
         {isEdit && canEdit ? (
           <input
@@ -47,7 +29,7 @@ const BlockTitle = ({
               {value}
             </h3>
             {canEdit && (
-              <Pencil
+              <SquarePen
                 size={16}
                 className="ml-2 hover:cursor-pointer"
                 onClick={() => setIsEdit(true)}

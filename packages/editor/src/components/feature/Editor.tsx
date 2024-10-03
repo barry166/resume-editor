@@ -5,6 +5,7 @@ import { Block, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
 import CustomBasicInfo from "./CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
 import AddCustomBlock from "./AddCustomBlock";
+import PageTitle from "./PageTitle";
 
 interface IProps {}
 
@@ -46,8 +47,17 @@ const Editor: React.FC<IProps> = () => {
     });
   };
 
+  const updatePageTitle = (value: string) => {
+    setPage((prev) => ({
+      ...prev,
+      title: value,
+    }));
+  };
+
   return (
     <div className="px-6 py-6">
+      {/* 标题编辑 */}
+      <PageTitle value={page.title} onChange={updatePageTitle} />
       {/* 基础信息编辑 */}
       <BasicInfo value={page.basicInfo} onChange={handleBasicInfoChange} />
       {/* 自定义基础信息编辑 */}
