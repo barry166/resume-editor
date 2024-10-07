@@ -12,8 +12,7 @@
     "build": "vite build",
     "build:dts": "tsc --declaration --emitDeclarationOnly",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "build:css": "cd src && find . -name \"*.css\" -exec tailwind -c ../tailwind.config.js -i {} -o ../dist/{} \\; && cd .."
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.1",

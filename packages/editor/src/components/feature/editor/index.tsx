@@ -1,11 +1,11 @@
 import { useRecoilState } from "recoil";
 import { pageState } from "@/store";
-import BasicInfo from "./BasicInfo";
+import BasicInfo from "../BasicInfo";
 import { Block, CustomBasicInfoItem, IBasicInfo } from "@resume/shared";
-import CustomBasicInfo from "./CustomBasicInfo";
+import CustomBasicInfo from "../CustomBasicInfo";
 import { componentMap } from "@/utils/componentMap";
-import AddCustomBlock from "./AddCustomBlock";
-import PageTitle from "./PageTitle";
+import AddCustomBlock from "../AddCustomBlock";
+import PageTitle from "../PageTitle";
 
 interface IProps {}
 

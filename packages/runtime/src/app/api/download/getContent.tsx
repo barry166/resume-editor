@@ -5,8 +5,6 @@ import { templateMap } from "@resume/template";
 import { content as styleContent } from "@resume/template/dist/style";
 import { PassThrough } from "stream";
 
-console.log("styleModule", styleContent);
-
 export async function getClientHtmlContent(config: any) {
   const ReactDomServer = (await import("react-dom/server")).default;
   const React = (await import("react")).default;
@@ -26,6 +24,8 @@ export async function getClientHtmlContent(config: any) {
           let content = "";
           stream.on("data", (chunk) => (content += chunk));
           stream.on("end", () => {
+            debugger;
+            console.log("styleContent", styleContent);
             let html = `
           <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +34,28 @@ export async function getClientHtmlContent(config: any) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>${styleContent}</style>
+  <style>
+  body, html {
+    height: auto;
+    page-break-after: avoid;
+  }
+  @page {
+    size: 10.69in 15.12in;
+    page-break-after: always;
+    margin: 0;
+    overflow: hidden;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 10.69in;
+    height: 15.12in;
+  }
+  .page {
+    page-break-after: always;
+    height: 15.12in;
+  }
+  </style>
 </head>
 <body>
 ${content}
@@ -48,7 +70,7 @@ ${content}
           reject(error);
           abort();
         },
-      }
+      },
     );
 
     // 设置超时以防止过长等待（可根据需要调整超时时间）

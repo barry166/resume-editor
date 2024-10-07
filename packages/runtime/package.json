@@ -12,7 +12,8 @@
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.6",
-    "@resume/template": "workspace:*"
+    "@resume/template": "workspace:*",
+    "@resume/shared": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5",

@@ -1,0 +1,19 @@
+@import "react-quill-new/dist/quill.snow.css";
+
+:root {
+    --a4-height-px: calc(15.12 * 96px); /* 假设96DPI */
+}
+/* 富文本编辑器 */
+.ql-snow .ql-editor ol,
+.ql-snow .ql-editor li {
+    list-style-position: inside;
+    padding-left: 0.8em;
+}
+.ql-snow .ql-editor ol li {
+    padding-left: 0;
+}
+
+.page {
+    width: 10.69in;
+    page-break-after: always;
+}

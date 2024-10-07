@@ -90,13 +90,3 @@ body {
         border-radius: 10px;
     }
 }
-
-/* 富文本编辑器 */
-.ql-snow .ql-editor ol,
-.ql-snow .ql-editor li {
-    list-style-position: inside;
-    padding-left: 0.8em;
-}
-.ql-snow .ql-editor ol li {
-    padding-left: 0;
-}

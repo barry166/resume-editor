@@ -176,7 +176,10 @@ export default function DefaultTemplate(props: IProps) {
   };
 
   return (
-    <div className="p-8 max-w-screen-lg bg-white m-auto" id="default-template">
+    <div
+      className="p-8 max-w-screen-lg bg-white m-auto page"
+      id="default-template"
+    >
       {renderHeader()}
       <section>{renderSectionContent()}</section>
     </div>

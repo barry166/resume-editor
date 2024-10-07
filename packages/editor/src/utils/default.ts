@@ -27,8 +27,9 @@ export const createDefaultPageConfig = (): Page => {
         config: {
           title: "个人简介",
           content:
-            "拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。",
+            '<ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span>拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。</li><li data-list="ordered"><span class="ql-ui" contenteditable="false"></span>拥有丰富的前端开发经验，熟练掌握 React、Vue 等主流前端框架。</li></ol><p>assssss</p><h2>aaaaaaa前端开发经验，熟练掌握 React、Vue 等主流前端框架。</h2><p>kkk</p><p>qqq</p><p>end</p>',
         },
+        style: { marginTop: "-3px" },
       },
       {
         id: "3",
@@ -42,21 +43,49 @@ export const createDefaultPageConfig = (): Page => {
               content: "前端开发工程师。。。",
               subTitle: "高级前端开发",
               city: "北京",
-              timeArea: {
-                from: 1642608000000,
-                to: 1644422400000,
-              },
+              timeArea: { from: 1642608000000, to: 1644422400000 },
             },
             {
-              id: "2",
+              id: "31",
               title: "公司B",
               content: "全栈开发工程师。。。",
               subTitle: "高级前端开发",
               city: "北京",
-              timeArea: {
-                from: 1642608000000,
-                to: 1644422400000,
-              },
+              timeArea: { from: 1642608000000, to: 1644422400000 },
+            },
+            {
+              id: "512",
+              title: "公司B",
+              content: "全栈开发工程师。。。",
+              subTitle: "高级前端开发",
+              city: "北京",
+              timeArea: { from: 1642608000000, to: 1644422400000 },
+            },
+            {
+              id: "513",
+              title: "公司B",
+              content: "全栈开发工程师。。。",
+              subTitle: "高级前端开发",
+              city: "北京",
+              timeArea: { from: 1642608000000, to: 1644422400000 },
+            },
+            {
+              id: "514",
+              title: "公司B",
+              content:
+                "<p>90后卖糖小葫芦</p><p>小韭菜甜又甜</p><p>魔力试试</p>",
+              subTitle: "高级前端开发",
+              city: "北京",
+              timeArea: { from: 1642608000000, to: 1644422400000 },
+            },
+            {
+              id: "515",
+              title: "公司B11",
+              content:
+                "<p>糖葫芦</p><p>甜甜的一个大</p><p>打啊啊啊啊啊啊啊啊啊啊啊啊</p><p>12</p><p>12</p><p>1</p><p>31</p><p>end</p>",
+              subTitle: "高级前端开发",
+              city: "北京",
+              timeArea: { from: 1642608000000, to: 1644422400000 },
             },
           ],
           itemLabelMap: {
@@ -78,49 +107,9 @@ export const createDefaultPageConfig = (): Page => {
               id: "123",
               title: "KMS（AI智能体平台）",
               content: "",
-              timeArea: {
-                from: 1642608000000,
-                to: 1644422400000,
-              },
-            },
-            {
-              id: "456",
-              title: "MK低代码平台",
-              content: "",
-              timeArea: {
-                from: 1642608000000,
-                to: 1644422400000,
-              },
+              timeArea: { from: 1642608000000, to: 1644422400000 },
             },
           ],
-        },
-      },
-      {
-        id: "4",
-        type: "complex",
-        config: {
-          title: "教育经历",
-          isMultiFile: true,
-          items: [
-            {
-              id: "1",
-              title: "公司A",
-              content: "前端开发工程师。。。",
-              subTitle: "高级前端开发",
-              city: "北京",
-              timeArea: {
-                from: 1642608000000,
-                to: 1644422400000,
-              },
-            },
-          ],
-          itemLabelMap: {
-            title: "学校名称",
-            subTitle: "最高学历",
-            timeArea: "起止时间",
-            city: "专业",
-            content: "描述",
-          },
         },
       },
       {
@@ -132,6 +121,15 @@ export const createDefaultPageConfig = (): Page => {
             { id: "11", content: "前端开发" },
             { id: "22", content: "React" },
           ],
+        },
+      },
+      {
+        id: "6b0e06ae-0c87-429e-8ff5-fe1786867575",
+        type: "simple",
+        config: {
+          title: "简单模块",
+          isMultiFile: false,
+          content: "<p>1111111111111111</p>",
         },
       },
     ],

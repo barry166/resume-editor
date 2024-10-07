@@ -20,6 +20,9 @@ importers:
       lucide-react:
         specifier: ^0.427.0
         version: 0.427.0(react@18.3.1)
+      react-quill-new:
+        specifier: ^3.3.0
+        version: 3.3.0(quill-delta@5.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/node':
         specifier: ^22.3.0
@@ -148,6 +151,9 @@ importers:
 
   packages/runtime:
     dependencies:
+      '@resume/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@resume/template':
         specifier: workspace:*
         version: link:../template
@@ -3820,6 +3826,9 @@ packages:
   tailwind-merge@2.5.2:
     resolution: {integrity: sha512-kjEBm+pvD+6eAwzJL2Bi+02/9LFLal1Gs61+QB7HvTfQQ0aXwC5LGT8PEt1gS0CWKktKe6ysPTAy3cBC5MeiIg==}
 
+  tailwind-merge@2.5.3:
+    resolution: {integrity: sha512-d9ZolCAIzom1nf/5p4LdD5zvjmgSxY0BGgdSvmXIoMYAiPdAW/dSpP7joCDYFY7r/HkEa2qmPtkgsu0xjQeQtw==}
+
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
@@ -5993,7 +6002,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-easy-sort: 1.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      tailwind-merge: 2.5.2
+      tailwind-merge: 2.5.3
       tsup: 6.7.0(postcss@8.4.41)(typescript@5.5.4)
     transitivePeerDependencies:
       - '@swc/core'
@@ -7903,6 +7912,8 @@ snapshots:
       stable: 0.1.8
 
   tailwind-merge@2.5.2: {}
+
+  tailwind-merge@2.5.3: {}
 
   tailwindcss-animate@1.0.7(tailwindcss@3.4.10):
     dependencies:
