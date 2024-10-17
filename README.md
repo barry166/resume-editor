@@ -52,6 +52,7 @@
    ```
    docker run --rm -p 8001:3000 gotenberg/gotenberg:8
    pnpm run dev
+   pnpm run server:dev
    ```
 
 4. 在浏览器中打开 `http://localhost:5173` 查看应用。
