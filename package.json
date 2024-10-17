@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd packages/editor && pnpm dev"
+    "build:template": "cd packages/template && pnpm build",
+    "dev": "npm run build:template && cd packages/editor && pnpm dev",
+    "server:dev": "cd packages/runtime && pnpm dev",
+    "build:editor": "cd packages/editor && pnpm build",
+    "build": "npm run build:template && npm run build:editor"
   },
   "keywords": [],
   "author": "",
